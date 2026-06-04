@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>AdeComm Hub</title>
+</head>
+<body style="background-color: #f4f6f9; padding: 20px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333333; line-height: 1.6; margin: 0;">
+
+    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+        <div style="background-color: #1d3557; width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 2px solid #e63946;">
+            <span style="font-size: 2rem;">📚</span>
+        </div>
+        <div>
+            <h1 style="color: #1d3557; margin: 0; font-size: 1.8rem; font-weight: bold;">AdeComm <span style="color: #e63946;">Hub</span></h1>
+            <p style="color: #555555; font-style: italic; margin: 0; font-size: 0.9rem;">The Global Student-Tutor Network</p>
+        </div>
+    </div>
+    
+    <hr style="border: 0; height: 1px; background: #dcdcdc; margin: 20px 0;">
+
+    <div style="background-color: #ffffff; padding: 20px; border-radius: 8px; border: 1px solid #e0e0e0; margin-bottom: 25px;">
+        <h4 style="color: #1d3557; margin: 0 0 10px 0; font-size: 1.1rem;">🔍 Live Student Search</h4>
+        <form action="https://www.google.com/search" method="GET" target="_blank" style="display: flex; gap: 10px;">
+            <input type="text" name="q" placeholder="Type here to research..." required 
+                   style="flex: 1; padding: 12px; border-radius: 5px; border: 1px solid #cccccc; font-size: 1rem;">
+            <button type="submit" style="background-color: #e63946; color: #ffffff; padding: 10px 15px; border: none; border-radius: 5px; font-weight: bold;">Search</button>
+        </form>
+    </div>
+
+    <h3 style="color: #1d3557; font-size: 1.2rem;">🌐 Live Interactive Hub</h3>
+    <div style="background-color: #ffffff; padding: 15px; border-radius: 8px; border: 1px solid #e0e0e0; border-top: 4px solid #e63946; margin-bottom: 25px;">
+        <p style="font-size: 0.9rem; color: #666666; margin-bottom: 10px;">📹 Create or Join a Meeting:</p>
+        <div style="display: flex; gap: 5px; margin-bottom: 10px;">
+            <input type="text" id="roomName" placeholder="Enter room name..." 
+                   style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+            <button onclick="launchMeeting()" style="background-color: #1d3557; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">Go</button>
+        </div>
+        <div id="meetContainer" style="position: relative; width: 100%; height: 350px; background-color: #000; border-radius: 6px; overflow: hidden; display: none;">
+            <iframe id="jitsiFrame" src="" allow="camera; microphone; fullscreen; display-capture; autoplay" style="border: none; width: 100%; height: 100%;"></iframe>
+        </div>
+    </div>
+
+    <h3 style="color: #1d3557; font-size: 1.2rem;">📚 Audio Archive</h3>
+    <div style="background-color: #ffffff; padding: 15px; border-radius: 8px; border-left: 4px solid #1d3557; border: 1px solid #e0e0e0;">
+        <p style="font-weight: bold; color: #1d3557; margin-top: 0;">🎵 Intro to Surds</p>
+        <audio controls style="width: 100%;">
+            <source src="lecture.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <div style="background-color: #1d3557; color: #ffffff; padding: 20px; border-radius: 8px; margin-top: 30px;">
+        <h3 style="color: #f1faee; margin-top: 0; font-size: 1.2rem;">👤 Meet the Creator</h3>
+        <p style="line-height: 1.6; font-size: 0.9rem; color: #f1faee;">
+            <strong>AdeComm Hub</strong> was conceptualized and developed by <strong>ADEKA Martin Delali</strong>. Driven by a passion for technology and educational accessibility, Martin created this platform to bridge the gap between schools and students worldwide.
+        </p>
+        <h4 style="color: #a8dadc; margin-bottom: 5px; font-size: 1rem;">📞 Contact & Collaboration</h4>
+        <p style="margin: 0; font-size: 0.9rem;">
+            📱 Line 1: 0207276292<br>
+            📱 Line 2: 0205106768
+        </p>
+    </div>
+
+    <div style="margin-top: 30px; text-align: center; color: #888; font-size: 0.8rem;">
+        <p>AdeComm Hub Platform • Version 1.4.1 (Official)</p>
+    </div>
+
+    <script>
+        function launchMeeting() {
+            var room = document.getElementById('roomName').value;
+            if(room) {
+                var iframe = document.getElementById('jitsiFrame');
+                iframe.src = "https://meet.jit.si/" + room;
+                document.getElementById('meetContainer').style.display = 'block';
+            } else {
+                alert("Please enter a room name!");
+            }
+        }
+    </script>
+
+</body>
+</html>
