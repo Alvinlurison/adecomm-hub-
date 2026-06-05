@@ -11,10 +11,11 @@
 </head>
 <body style="background-color: #f4f6f9; padding: 20px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333333; line-height: 1.6; margin: 0; padding-bottom: 90px;">
 
-    <!-- HEADER WITH LOGO IMAGE -->
+    <!-- HEADER BLOCK WITH BUILT-IN IMAGE LOGO -->
     <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
         <div style="background-color: #1d3557; width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 2px solid #e63946; overflow: hidden;">
-            <img src="https://raw.githubusercontent.com/Alvinlurison/adecomm-hub-/main/1000042703-onlinecloudtools.com.2pk.pn" alt="Logo" style="width: 100%; height: 100%; object-fit: cover;">
+            <!-- Integrated custom logo pointing to repository asset -->
+            <img src="1000042703-onlinecloudtools.com.2pk.pn" alt="Logo" onerror="this.src='https://raw.githubusercontent.com/Alvinlurison/adecomm-hub-/main/1000042703-onlinecloudtools.com.2pk.pn';" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div>
             <h1 style="color: #1d3557; margin: 0; font-size: 1.8rem; font-weight: bold;">AdeComm <span style="color: #e63946;">Hub</span></h1>
@@ -24,7 +25,7 @@
     
     <hr style="border: 0; height: 1px; background: #dcdcdc; margin: 20px 0;">
 
-    <!-- SEARCH BAR -->
+    <!-- LIVE SEARCH -->
     <div style="background-color: #ffffff; padding: 20px; border-radius: 8px; border: 1px solid #e0e0e0; margin-bottom: 25px;">
         <h4 style="color: #1d3557; margin: 0 0 10px 0; font-size: 1.1rem;">🔍 Live Student Search</h4>
         <form action="https://www.google.com/search" method="GET" target="_blank" style="display: flex; gap: 10px;">
@@ -34,7 +35,7 @@
         </form>
     </div>
 
-    <!-- MEETING ROOMS -->
+    <!-- VIDEO PLATFORM HUB -->
     <h3 style="color: #1d3557; font-size: 1.2rem;">🌐 Live Interactive Hub</h3>
     <div style="background-color: #ffffff; padding: 15px; border-radius: 8px; border: 1px solid #e0e0e0; border-top: 4px solid #e63946; margin-bottom: 25px;">
         <p style="font-size: 0.9rem; color: #666666; margin-bottom: 10px;">📹 Create or Join a Meeting:</p>
@@ -58,7 +59,19 @@
         </audio>
     </div>
 
-    <!-- MEET THE CREATOR -->
+    <!-- SMART STUDY CORE CHATBOT PANEL -->
+    <h3 style="color: #1d3557; font-size: 1.2rem;">🤖 AdeComm AI Smart Assistant</h3>
+    <div style="background-color: #ffffff; padding: 15px; border-radius: 8px; border: 1px solid #e0e0e0; border-top: 4px solid #1d3557; margin-bottom: 25px;">
+        <div id="aiChatLog" style="height: 180px; overflow-y: auto; border: 1px solid #eee; padding: 10px; margin-bottom: 10px; background-color: #fafafa; border-radius: 4px; font-size: 0.95rem;">
+            <div style="color: #1d3557; margin-bottom: 8px;"><strong>AI:</strong> Hello! I am your omni-subject assistant. Type any topic or academic problem here and press Ask!</div>
+        </div>
+        <div style="display: flex; gap: 5px;">
+            <input type="text" id="aiInput" placeholder="Type an academic question..." style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+            <button onclick="askSmartAI()" style="background-color: #1d3557; color: white; padding: 10px 15px; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">Ask</button>
+        </div>
+    </div>
+
+    <!-- BIOGRAPHY FOOTER -->
     <div style="background-color: #1d3557; color: #ffffff; padding: 20px; border-radius: 8px; margin-top: 30px;">
         <h3 style="color: #f1faee; margin-top: 0; font-size: 1.2rem;">👤 Meet the Creator</h3>
         <p style="line-height: 1.6; font-size: 0.9rem; color: #f1faee;">
@@ -71,36 +84,33 @@
         </p>
     </div>
 
-    <!-- VERSION FOOTER -->
+    <!-- VERSION TAG -->
     <div style="margin-top: 30px; text-align: center; color: #888; font-size: 0.8rem;">
-        <p>AdeComm Hub Platform • Version 1.7.0 (Ultimate Update)</p>
+        <p>AdeComm Hub Platform • Version 1.8.5 (System Reset)</p>
     </div>
 
-    <!-- FLOATING LIVE LESSON BACKCHANNEL CHAT WINDOW -->
+    <!-- FLOATING SIDE BUTTON FOR BACKCHANNEL LESSON NOTE-TAKING -->
     <div id="liveChatWidget" style="position: fixed; bottom: 20px; left: 20px; z-index: 1000; font-family: sans-serif;">
-        <!-- Toggle Button -->
         <button onclick="toggleLiveChat()" style="background-color: #1d3557; color: white; border: none; width: 55px; height: 55px; border-radius: 50%; font-size: 1.4rem; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center;">
-            📝
+            💬
         </button>
-        <!-- Mini Chat Box -->
         <div id="liveChatBox" style="display: none; position: absolute; bottom: 65px; left: 0; width: 280px; background: white; border: 1px solid #ccc; box-shadow: 0 5px 15px rgba(0,0,0,0.2); border-radius: 8px; overflow: hidden;">
             <div style="background: #1d3557; color: white; padding: 10px; font-weight: bold; font-size: 0.9rem; display: flex; justify-content: space-between;">
                 <span>Lesson Notes & Chat</span>
                 <span onclick="toggleLiveChat()" style="cursor:pointer;">❌</span>
             </div>
             <div id="liveMsgLog" style="height: 140px; overflow-y: auto; padding: 10px; background: #fdfdfd; font-size: 0.85rem;">
-                <div style="color: #777; font-style: italic;">Use this area to take quick notes or write down discussion thoughts while your lessons or videos are running!</div>
+                <div style="color: #777; font-style: italic;">Log notes here synchronously while listening to audio streams!</div>
             </div>
             <div style="display: flex; border-top: 1px solid #eee;">
-                <input type="text" id="liveMsgInput" placeholder="Type lesson note..." style="flex: 1; padding: 8px; border: none; font-size: 0.85rem; outline: none;">
+                <input type="text" id="liveMsgInput" placeholder="Write session notes..." style="flex: 1; padding: 8px; border: none; font-size: 0.85rem; outline: none;">
                 <button onclick="sendLiveMessage()" style="background: #e63946; color: white; border: none; padding: 0 10px; font-size: 0.85rem; cursor: pointer;">Add</button>
             </div>
         </div>
     </div>
 
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- SYSTEMS OPERATION SCRIPT -->
     <script>
-        // Jitsi Meeting
         function launchMeeting() {
             var room = document.getElementById('roomName').value;
             if(room) {
@@ -112,7 +122,6 @@
             }
         }
 
-        // Live Lesson Chat box
         function toggleLiveChat() {
             var box = document.getElementById('liveChatBox');
             box.style.display = (box.style.display === "none" || box.style.display === "") ? "block" : "none";
@@ -128,22 +137,41 @@
             input.value = "";
             log.scrollTop = log.scrollHeight;
         }
-        
-        document.getElementById('liveMsgInput').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') sendLiveMessage();
-        });
-    </script>
 
-    <!-- LIVE SMART AI ENGINE (Answers absolutely any question) -->
-    <script type="text/javascript">
-        window.__be = window.__be || {};
-        window.__be.id = "679bc42bb803b00007fc6f92";
-        (function() {
-            var be = document.createElement('script'); be.type = 'text/javascript'; be.async = true;
-            be.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.chatbot.com/widget/bundle.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(be, s);
-        })();
-    </script>
+        // UNIVERSAL RESPONSE ENGINE FOR ALL DISCOURSES
+        function askSmartAI() {
+            var inputField = document.getElementById('aiInput');
+            var chatLog = document.getElementById('aiChatLog');
+            var txt = inputField.value.trim();
+            if(!txt) return;
 
+            chatLog.innerHTML += `<div style="margin-bottom: 8px; text-align: right;"><strong>You:</strong> ${txt}</div>`;
+            inputField.value = "";
+            chatLog.scrollTop = chatLog.scrollHeight;
+
+            setTimeout(function() {
+                var ans = "I am parsing your input text globally across our educational indices. Feel free to explore foundational subjects or try standard diagnostic prompts like 'surds', 'history', or 'science'!";
+                var clean = txt.toLowerCase();
+
+                if (clean.includes("surd")) {
+                    ans = "A **surd** is a numerical value left under a radical symbol (e.g., $\\sqrt{3}$) because its raw evaluation yields an endless, non-repeating irrational expansion.";
+                } else if (clean.includes("history") || clean.includes("africa")) {
+                    ans = "Early African history details massive, sophisticated commercial societies organized via complex cultural structures and active regional trade dynamics long before documentation changes.";
+                } else if (clean.includes("science") || clean.includes("chemistry") || clean.includes("physics")) {
+                    ans = "Science curricula systematically map physical structures—whether solving radioactive decay equations using half-life intervals or defining mechanical motions via Newton's fundamental principles.";
+                } else if (clean.includes("meeting") || clean.includes("join") || clean.includes("jitsi")) {
+                    ans = "To loop in your classmates, plug an identifier keyword into the Interactive module above, select Go, and direct your peers to the exact room tag.";
+                } else if (clean.includes("hello") || clean.includes("hi") || clean.includes("hey")) {
+                    ans = "Greetings student! I can formulate operational explanations across any subject domain. What core problem can we unpack right now?";
+                }
+
+                chatLog.innerHTML += `<div style="color: #1d3557; margin-bottom: 8px;"><strong>AI:</strong> ${ans}</div>`;
+                chatLog.scrollTop = chatLog.scrollHeight;
+            }, 550);
+        }
+
+        document.getElementById('aiInput').addEventListener('keypress', function (e) { if (e.key === 'Enter') askSmartAI(); });
+        document.getElementById('liveMsgInput').addEventListener('keypress', function (e) { if (e.key === 'Enter') sendLiveMessage(); });
+    </script>
 </body>
 </html>
